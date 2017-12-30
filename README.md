@@ -18,6 +18,9 @@ They are written in the Q language by Arthur Whitney and KX Systems.
 
 ## usage
 
+1. Install the latest Q/Kdb from [KX Systems](http://www.kx.com/)
+
+2. Setup config:
 ```
 $ cp _CONF.EXAMPLE.q _CONF.q
 $ vim _CONF.q
