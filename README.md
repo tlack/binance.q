@@ -10,7 +10,7 @@ They are written in the Q language by Arthur Whitney and KX Systems.
 
 * fetch.q - endless loop. download trades for watched symbols. store in data/
 
-* pnl.q - using your downloaded trade history, attempt to build a profit and loss statement for every active trading period of the day
+* pnl.q - using your downloaded trade history, attempt to build a profit and loss statement for every active trading period of the day, and builds a trade table for you
 
 * ranges.q - not yet implemented. stats for a given set of trades.
 
@@ -24,6 +24,7 @@ They are written in the Q language by Arthur Whitney and KX Systems.
 ```
 $ cp _CONF.EXAMPLE.q _CONF.q
 $ vim _CONF.q
+$ mkdir data/ logs/
 $ q fetch.q
 # etc..
 ```
