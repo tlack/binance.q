@@ -6,6 +6,8 @@ API[`TG]:"https://api.telegram.org/bot9999999999999999999999999999999999999999:A
 API[`BN]:"https://api.binance.com/api/v1/";
 
 CURL:"curl -sk ";                                 / command on your system for curl
+CURLDLY:0.5;                                      / delay in seconds between HTTP requests
+
 SYMS:"ETHBTC XLMBTC POEBTC XVGBTC";               / symbols to watch
 
 BTC:13000;                                        / exchange rate for bitcoin-to-USD (convenience)
