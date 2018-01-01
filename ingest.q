@@ -3,20 +3,33 @@
 \l _CONF.q
 \l _lib.q
 
-load `AllTrades;
-show ("AllTrades size=";count AllTrades);
-syms:" "vs SYMS;
+load `Trades;
+show ("Trades size=";count Trades);
+
 symfn:{`$":data/",x,"-",ssr[string[.z.P],".json";":";"."]};
-ingest:{ trades:`id xkey select px:price from update price:"F"$price,qty:"F"$qty,time:"Z"$_[-1;] 
-	each .Q.f[0;] each time%1000 from x;
-	`AllTrades upsert trades;
-	x }
+ingest:{
+	a:update sym:(count price)#x,price:"F"$price,qty:"F"$qty,dt:"Z"$_[-1;] 
+			each .Q.f[0;] each time%1000 from y;
+	show ("a";a);
 
-gettr:{show fn:symfn[x]; sleep[0.4]; fn set .j.j ingest api[`BN;"trades?symbol=",x]};
+	trades: 0N!`id xkey select px:price from 
+		delete isBuyerMaker,isBestMatch from 
+		a;
+	show ("trades";trades);
 
-gettr each syms; 
+	show meta trades;
+	show meta Trades;
 
-show ("AllTrades new size=";count AllTrades)
-save `AllTrades
+	`Trades upsert trades;
+	show Trades;
+
+	y }
+
+gettr:{show fn:symfn[x]; sleep[0.4]; fn set .j.j ingest[x;] api[`BN;"trades?symbol=",x]};
+
+gettr each Syms; 
+
+show ("Trades new size=";count Trades)
+save `Trades
 
 
